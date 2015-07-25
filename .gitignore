@@ -1,43 +1,34 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+src/*.exe
+src/Bells
+src/Bellsd
+src/test_Bells
+.*.swp
+*.*~*
+*.bak
+*.rej
+*.orig
+*.o
+*.patch
+.Bells
 
-# Folder config file
-Desktop.ini
+# Compilation and Qt preprocessor part
+*.qm
+Makefile
+Bells-qt
+Bells-Qt.app
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# Unit-tests
+Makefile.test
+Bells-qt_test
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# Resources cpp
+qrc_*.cpp
 
-# Windows shortcuts
-*.lnk
+# Qt creator
+*.pro.user
 
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
+# Mac specific
 .DS_Store
-.AppleDouble
-.LSOverride
+build
 
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+!src/leveldb*/Makefile
