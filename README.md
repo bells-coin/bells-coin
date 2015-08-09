@@ -3,8 +3,8 @@ Bells [BEL]
 
 http://www.bellscoin.org
 
-Copyright (c) 2009-2014 Bitcoin Developers
-Copyright (c) 2011-2014 Bells Developers
+Copyright (c) 2009-2015 Bitcoin Developers
+Copyright (c) 2011-2015 Bells Developers
 
 What is Bells?
 ----------------
