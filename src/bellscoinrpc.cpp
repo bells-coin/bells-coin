@@ -13,7 +13,7 @@
 #include "init.h"
 #include "ui_interface.h"
 #include "base58.h"
-#include "bitcoinrpc.h"
+#include "bellscoinrpc.h"
 
 #undef printf
 #include <boost/asio.hpp>
