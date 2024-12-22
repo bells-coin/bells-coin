@@ -1194,10 +1194,17 @@ void MapPort(bool)
 
 // these seednodes need testing, a lot are offline
 static const char *strMainNetDNSSeed[][2] = {
-	{"node0.bellscoin.com", "node0.bellscoin.com"},
+    {"80.112.144.84","80.112.144.84"},                 // temporary seednode
+    {"162.248.162.28", "162.248.162.28"},
+	{"node0.bellscoin.org", "node0.bellscoin.org"},
+	{"node1.bellscoin.org", "node1.bellscoin.org"},
+    {"Bellstools.com", "dnsseed.Bellstools.com"},
     {"Bellspool.org", "dnsseed.Bellspool.org"},
-	{"203.20.114.252", "203.20.114.252"},
-    {"31.31.202.138", "31.31.202.138"},
+    {"xurious.com", "dnsseed.BELLS.xurious.com"},
+    {"koin-project.com", "dnsseed.koin-project.com"},
+    {"weminemnc.com", "dnsseed.weminemnc.com"},
+	{"node2.bellscoin.org", "node2.bellscoin.org"},
+	{"node3.bellscoin.org", "node3.bellscoin.org"},
     {NULL, NULL}
 };
 

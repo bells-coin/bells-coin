@@ -6,7 +6,7 @@
 #include <boost/assign/list_of.hpp>
 
 #include "base58.h"
-#include "bellscoinrpc.h"
+#include "bitcoinrpc.h"
 #include "db.h"
 #include "init.h"
 #include "main.h"

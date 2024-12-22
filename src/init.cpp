@@ -5,7 +5,7 @@
 
 #include "txdb.h"
 #include "walletdb.h"
-#include "bellscoinrpc.h"
+#include "bitcoinrpc.h"
 #include "net.h"
 #include "init.h"
 #include "util.h"

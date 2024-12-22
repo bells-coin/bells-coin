@@ -6,7 +6,7 @@
 #include "ui_rpcconsole.h"
 
 #include "clientmodel.h"
-#include "bellscoinrpc.h"
+#include "bitcoinrpc.h"
 #include "guiutil.h"
 
 #include <QTime>
