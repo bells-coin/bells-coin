@@ -9,6 +9,8 @@
 #include "transactiontablemodel.h"
 
 #include "ui_interface.h"
+
+#include <boost/bind.hpp>
 #include "wallet.h"
 #include "walletdb.h" // for BackupWallet
 #include "base58.h"

@@ -14,6 +14,8 @@
 #include "checkpoints.h"
 #include "ui_interface.h"
 
+#include <boost/bind.hpp>
+
 #include <QDateTime>
 #include <QTimer>
 
