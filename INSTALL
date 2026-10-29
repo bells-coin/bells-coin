@@ -1,9 +1,69 @@
-Building Bells
+Building and installing Bells
+=============================
 
-See doc/readme-qt.rst for instructions on building Bells-Qt,
-the intended-for-end-users, nice-graphical-interface, reference
-implementation of Bells.
+Bells 0.8.7.1 builds two executables:
 
-See doc/build-*.txt for instructions on building Bellsd,
-the intended-for-services, no-graphical-interface, reference
-implementation of Bells.
+    bellsd      headless daemon (JSON-RPC server, mining node)
+    bells-qt    graphical wallet (Qt 5)
+
+End users on Windows do not need to build anything: unpack the release archive
+and run `bells-qt.exe` or `bellsd.exe`. See README.md, section
+"Getting started (Windows)".
+
+Building from source
+--------------------
+
+Read the platform specific notes before starting:
+
+    doc/build-msw.md    Windows: cross-compile from Linux (verified for 0.8.7.1),
+                        native MSYS2 builds are documented as well
+    doc/build-unix.md   Linux and other Unix-like systems
+    doc/build-osx.md    macOS
+
+Required libraries:
+
+    Boost           1.83 is known to work (newer versions may need patches)
+    Berkeley DB     4.8.30.NC, required for wallet compatibility
+    OpenSSL         1.0.2u, required by the 0.8.x API
+    LevelDB         bundled in src/leveldb, no separate install needed
+    Qt              5.15.2, only needed for the graphical wallet
+    miniupnpc       optional, UPnP support
+
+The 0.8.x code base predates the OpenSSL 1.1 API and does not build against
+OpenSSL 3.x. OpenSSL 1.0.2u has to be built and linked explicitly; the same
+applies to Boost, which must be built with a C++11 compiler and linked
+statically on Windows.
+
+Daemon build (Unix-like systems):
+
+    cd src
+    make -f makefile.unix
+
+Daemon build (cross-compile for Windows):
+
+    cd src
+    make -f makefile.linux-mingw
+
+Note: `makefile.linux-mingw` uses the historical library names
+(`boost_*-mt-s`). With a Boost installation built using `--layout=system`
+adjust `BOOST_LIB_SUFFIX` and `LDFLAGS` accordingly, or follow the step by step
+instructions in doc/build-msw.md.
+
+Graphical wallet build:
+
+    qmake bitcoin-qt.pro
+    make
+
+Installation
+------------
+
+The build does not provide an install target. Deployment consists of copying
+the executables together with their runtime dependencies:
+
+    Windows   bellsd.exe, bells-qt.exe, Qt5*.dll, libwinpthread-1.dll,
+              libstdc++-6.dll, libgcc_s_*.dll, platforms/qwindows.dll,
+              imageformats/, styles/
+    Unix      bellsd, bells-qt and the system Qt/Boost/OpenSSL libraries
+
+Prebuilt Windows archives are published on the GitHub releases page:
+`bells-0.8.7.1-win64.zip` and `bells-0.8.7.1-win32.zip`.

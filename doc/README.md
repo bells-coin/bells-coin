@@ -1,5 +1,5 @@
-Bells 0.8.x BETA
-====================
+Bells 0.8.7.1
+=============
 
 Copyright (c) 2009-2014 Bitcoin Developers
 Copyright (c) 2011-2014 Bells Developers
@@ -14,34 +14,40 @@ Intro
 ---------------------
 Bells is a free open source peer-to-peer electronic cash system that is
 completely decentralized, without the need for a central server or trusted
-parties.  Users hold the crypto keys to their own money and transact directly
+parties. Users hold the crypto keys to their own money and transact directly
 with each other, with the help of a P2P network to check for double-spending.
+
+This is the 0.8.x reference implementation: `bellsd` (daemon) and `bells-qt`
+(graphical wallet). See the top level [README](../README.md) for the coin
+parameters, the project status and the end user instructions.
 
 
 Setup
 ---------------------
-You need the Qt4 run-time libraries to run Bells-Qt. On Debian or Ubuntu:
-	`sudo apt-get install libqtgui4`
+Windows users can download a ready to use archive from the releases page and
+unpack it into any directory:
 
-Unpack the files into a directory and run:
+- `bells-qt.exe` - graphical wallet
+- `bellsd.exe` - headless daemon
 
-- bin/32/Bells-qt (GUI, 32-bit)
-- bin/32/Bellsd (headless, 32-bit)
-- bin/64/Bells-qt (GUI, 64-bit)
-- bin/64/Bellsd (headless, 64-bit)
+Both executables need the bundled Qt libraries and the `platforms` directory
+next to them. The data directory is `%APPDATA%\Bells` on Windows and
+`~/.bells` on Unix-like systems.
 
-See the documentation at the [Bells Wiki](http://Bells.info)
-for help and more information.
+On Linux the wallet needs the Qt 5 runtime libraries installed by the
+distribution, for example `libqt5widgets5`, `libqt5gui5` and `libqt5network5`.
 
 
 Other Pages
 ---------------------
+- [Windows Build Notes](build-msw.md)
 - [Unix Build Notes](build-unix.md)
 - [OSX Build Notes](build-osx.md)
-- [Windows Build Notes](build-msw.md)
+- [Qt Wallet Notes](readme-qt.rst)
 - [Coding Guidelines](coding.md)
 - [Release Process](release-process.md)
 - [Release Notes](release-notes.md)
 - [Multiwallet Qt Development](multiwallet-qt.md)
 - [Unit Tests](unit-tests.md)
 - [Translation Process](translation_process.md)
+- [Tor Support](Tor.txt)

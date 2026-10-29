@@ -1,3 +1,18 @@
+Build maintenance (2026)
+========================
+- Restored Windows builds for x86_64 and i686 using MinGW-w64 GCC 13.2.
+- Fixed compilation against Boost 1.83: the RPC server uses the current Asio
+  API (`get_executor`, `native_handle`, the new `ssl::context` constructor) and
+  the Qt models include `<boost/bind.hpp>` for the bind placeholders.
+- Fixed the `SOCKET` typedef clash with current MinGW-w64 headers.
+- Updated `bitcoin-qt.pro` for Qt 5.15: C++11 flags, unsuffixed Boost library
+  names, `BOOST_BIND_GLOBAL_PLACEHOLDERS`, additional system libraries for the
+  statically linked OpenSSL, and the architecture dependent
+  `--large-address-aware` flag.
+- Documented the current build procedure: OpenSSL 1.0.2u, Berkeley DB 4.8.30,
+  Boost 1.83 and Qt 5.15.2, including cross-compilation from Linux.
+- Rewrote README, INSTALL and the build notes in English.
+
 0.8.7.1 changes
 =============
 - Mac and Windows Official Gitian Builds: upgrade to openssl-1.0.1g for CVE-2014-0160

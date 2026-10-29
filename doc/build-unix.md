@@ -26,6 +26,11 @@ Dependencies
  libboost    Boost             C++ Library
  miniupnpc   UPnP Support      Optional firewall-jumping support
 
+Berkeley DB 4.8 is required. Newer versions change the wallet file format and
+must not be used. OpenSSL 1.1 and 3.x are not supported: the 0.8.x sources use
+the OpenSSL 1.0 API (opaque BIGNUM/ECDSA/EVP structures, `BN_init`,
+`EVP_CIPHER_CTX_init`). Use OpenSSL 1.0.2u.
+
 [miniupnpc](http://miniupnp.free.fr/) may be used for UPnP port mapping.  It can be downloaded from [here](
 http://miniupnp.tuxfamily.org/files/).  UPnP support is compiled in and
 turned off by default.  Set USE_UPNP to a different value to control this:
@@ -44,12 +49,18 @@ Licenses of statically linked libraries:
  Boost         MIT-like license
  miniupnpc     New (3-clause) BSD license
 
-- Versions used in this release:
--  GCC           4.3.3
--  OpenSSL       1.0.1c
+Versions known to work with this tree:
+
+-  GCC           13.2 (C++11 or later required)
+-  OpenSSL       1.0.2u
 -  Berkeley DB   4.8.30.NC
--  Boost         1.37
--  miniupnpc     1.6
+-  Boost         1.83.0
+-  Qt            5.15 (graphical wallet only)
+-  miniupnpc     1.6 or newer
+
+Boost 1.73 and later no longer declare the `boost::bind` placeholders (`_1`,
+`_2`) in the global namespace. This tree already includes the compatibility
+fix, so no manual changes are required.
 
 Dependency Build Instructions: Ubuntu & Debian
 ----------------------------------------------
@@ -58,21 +69,10 @@ Build requirements:
 	sudo apt-get install build-essential
 	sudo apt-get install libssl-dev
 
-for Ubuntu 12.04:
-
-	sudo apt-get install libboost-all-dev
-
- db4.8 packages are available [here](https://launchpad.net/~bitcoin/+archive/bitcoin).
-
- Ubuntu precise has packages for libdb5.1-dev and libdb5.1++-dev,
- but using these will break binary wallet compatibility, and is not recommended.
-
-for other Ubuntu & Debian:
-
-	sudo apt-get install libdb4.8-dev
-	sudo apt-get install libdb4.8++-dev
-	sudo apt-get install libboost1.37-dev
- (If using Boost 1.37, append -mt to the boost libraries in the makefile)
+Most current distributions ship OpenSSL 3.x and Berkeley DB 5.x, which are not
+compatible with this code base. Build OpenSSL 1.0.2u and Berkeley DB 4.8.30
+from source (see below) and point the build at them with `OPENSSL_INCLUDE_PATH`,
+`OPENSSL_LIB_PATH`, `BDB_INCLUDE_PATH` and `BDB_LIB_PATH`.
 
 Optional:
 
@@ -81,7 +81,7 @@ Optional:
 
 Notes
 -----
-The release is built with GCC and then "strip bitcoind" to strip the debug
+The release is built with GCC and then "strip bellsd" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 
@@ -90,26 +90,36 @@ miniupnpc
 	tar -xzvf miniupnpc-1.6.tar.gz
 	cd miniupnpc-1.6
 	make
-	sudo su
-	make install
+	sudo make install
 
 
 Berkeley DB
 -----------
 You need Berkeley DB 4.8.  If you have to build Berkeley DB yourself:
 
-	../dist/configure --enable-cxx
+	cd build_unix
+	../dist/configure --enable-cxx --disable-shared --prefix=/usr/local
 	make
+	sudo make install
+
+
+OpenSSL
+-------
+OpenSSL 1.0.2u has to be built separately:
+
+	./config no-shared -fcommon --prefix=/usr/local/ssl-1.0.2
+	make
+	sudo make install_sw
+
+`-fcommon` is required with GCC 10 and later.
 
 
 Boost
 -----
 If you need to build Boost yourself:
 
-	sudo su
 	./bootstrap.sh
-	./bjam install
-
+	./b2 --layout=system link=static threading=multi cxxstd=11 install
 
 Security
 --------
