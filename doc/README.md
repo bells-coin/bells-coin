@@ -40,6 +40,7 @@ distribution, for example `libqt5widgets5`, `libqt5gui5` and `libqt5network5`.
 
 Other Pages
 ---------------------
+- [Translations](i18n/README.md)
 - [Windows Build Notes](build-msw.md)
 - [Unix Build Notes](build-unix.md)
 - [OSX Build Notes](build-osx.md)

@@ -38,6 +38,35 @@ Prebuilt Windows binaries are available on the
 * `bells-0.8.7.1-win64.zip` - 64-bit build (x86_64)
 * `bells-0.8.7.1-win32.zip` - 32-bit build (i686)
 
+Translations
+------------
+
+This description and the installation instructions are also available in other
+languages. See the [translation index](doc/i18n/README.md) or open a language
+directly:
+
+[العربية](doc/i18n/README.ar.md) ·
+[বাংলা](doc/i18n/README.bn.md) ·
+[Български](doc/i18n/README.bg.md) ·
+[简体中文](doc/i18n/README.zh.md) ·
+[Suomi](doc/i18n/README.fi.md) ·
+[Français](doc/i18n/README.fr.md) ·
+[Deutsch](doc/i18n/README.de.md) ·
+[हिन्दी](doc/i18n/README.hi.md) ·
+[Magyar](doc/i18n/README.hu.md) ·
+[Bahasa Indonesia](doc/i18n/README.id.md) ·
+[Italiano](doc/i18n/README.it.md) ·
+[日本語](doc/i18n/README.ja.md) ·
+[한국어](doc/i18n/README.ko.md) ·
+[Polski](doc/i18n/README.pl.md) ·
+[Português](doc/i18n/README.pt.md) ·
+[Русский](doc/i18n/README.ru.md) ·
+[Español](doc/i18n/README.es.md) ·
+[Türkçe](doc/i18n/README.tr.md) ·
+[اردو](doc/i18n/README.ur.md)
+
+The English text is the reference; translations may lag behind after an update.
+
 Coin specification
 ------------------
 
